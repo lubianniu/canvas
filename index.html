@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+        	body{
+        		margin:0;
+        		padding:0;
+        	}
+        	canvas{
+        		border:1px solid #000;
+        		background-color:#ccc;
+        	}
+        </style>
+    </head>
+    <body>
+    	<canvas width="603" height="424"></canvas>
+    	<script>
+    		var canvas=document.querySelector('canvas');
+    		var ctx=canvas.getContext("2d");
+    		var Image=new Image();
+			
+    		Image.onload=function(){
+    			
+    			
+
+    		var ImageStyle=ctx.createPattern(Image,'no-repeat');
+
+    		
+    			
+    				ctx.lineWidth=20;
+    				
+    				// ctx.fill();	 
+    				ctx.lineCap='round';
+    				ctx.lineJoin='round';
+    			
+    			
+    			
+    				var isMouseDown=false;
+    		ctx.canvas.addEventListener('mousedown',function(e){
+    				ctx.moveTo(e.pageX,e.pageY);
+    				isMouseDown=true;
+    		});			
+    				
+    		ctx.canvas.addEventListener('mousemove',function(e){
+    			if(isMouseDown){
+
+    				ctx.lineTo(e.pageX, e.pageY);
+    				ctx.lineCap='round';  
+    				ctx.strokeStyle=ImageStyle;
+
+    				ctx.stroke();
+    				}
+
+    		});
+    		ctx.canvas.addEventListener('mouseup',function(e){
+    				isMouseDown=false;
+    		});
+    		}
+    		Image.src='timg.jpg';
+    	</script>
+    </body>
+</html>
